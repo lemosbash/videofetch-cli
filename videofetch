@@ -1,0 +1,61 @@
+#!/bin/bash
+#!/bin/bash
+audio () {
+  read -p "Is your video inside of a playlist and you just want the audio, not the whole playlist?(y/n)" audiop
+  confirm="y"
+  deny="n"
+  if [[ "$audiop" == "$confirm" ]]
+  then
+    read -p "Now insert a VALID video URL" link
+    youtube-dl --no-playlist -x $link
+  elif [[ "$audiop" == "$deny" ]]
+  then
+    read -p "Now insert a VALID video URL" link2
+    youtube-dl --no-playlist -x $link2
+  else
+    echo "grrr, do not mess with my script, hahahaha"
+  fi
+}
+
+
+video () {
+  confirm="y"
+  deny="n"
+  read -p "Is your video inside of a playlist and you just want the video, not the whole playlist?(y/n)" videop;
+  if [[ "$videop" == "$confirm" ]]
+  then
+    read -p "now that i know it, please insert a VALID video URL" URL
+    youtube-dl --no-playlist $URL
+  elif [[ "$videop" == "$deny" ]]
+  then
+    read -p "now, paste ur video URL here" url2;
+    youtube-dl $url2;
+  else
+    echo "ur kidding with my script, aren't u?";
+  fi
+}
+
+playlist () {
+  read -p "please insert the URL a valid URL for the playlist" playlist
+  youtube-dl --yes-playlist $playlist
+}
+
+read -p "what do you want to download from the url you will insert?(audio/video/playlist)" youtube
+case $youtube in
+  audio)
+  audio;
+  ;;
+
+  video)
+  video;
+  ;;
+
+  playlist)
+  playlist;
+  ;;
+
+  *)
+  echo "please, don't troll this script....";
+  ;;
+esac
+
