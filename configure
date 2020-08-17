@@ -1,2 +1,6 @@
 #!/bin/bash
 sudo cp videofetch /bin
+mkdir ~/videofetch-videos
+mkdir ~/videofetch-audios
+mkdir ~/videofetch-playlists
+mkdir ~/musicFSF

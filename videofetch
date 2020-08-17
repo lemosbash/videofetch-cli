@@ -1,5 +1,4 @@
 #!/bin/bash
-#!/bin/bash
 audio () {
   read -p "Please insert a valid URL for the video you're extracting the audio" URL
   youtube-dl --no-playlist -x $URL
@@ -27,9 +26,23 @@ video () {
 }
 
 playlist () {
-  read -p "please a URL of a video of the playlist" playlist
-  youtube-dl --yes-playlist $playlist
-  mv *.mp4 *.webm *.mkv ~/videofetch-playlists &> /dev/null
+ #this was actually my idea about replacing my spotify with a program that i made by myself
+ read -p "Are you trying to download a music playlist?(y/n)" spotifyreplacer
+  FSF="y"
+  videokk="n"
+  if [[ "$spotifyreplacer" == "$FSF" ]]
+  then
+     read -p "Insert a url of one music that is inside of the  playlist" musicfreedom
+     youtube-dl --yes-playlist -x $musicfreedom
+     mv *.opus ~/musicFSF &> /dev/null
+  elif [["$spotifyreplacer" == "$videokk"]]
+  then
+     read -p "Insert a url of the video" $linkzin
+     youtube-dl --yes-playlist $linkzin
+     mv *.mp4 *.webm *.mkv ~/videofetch-playlists &> /dev/null
+  else
+    echo "do nothing...."; 
+  fi
 }
 
 read -p "what do you want to download from the url you will insert?(audio/video/playlist)" youtube
